@@ -31,7 +31,7 @@ O **Sistema de Gestão das Olimpíadas (SGO)** foi idealizado para centralizar e
 ![Diagrama de Atores](./diagramas/Diagrama-de-Casos-de-Uso.jpg)
 
 ---
-
+```
 ## 🧩 Estrutura do Repositório
 
 📁 Sistema-de-Gestao-Olimpiadas/
@@ -41,7 +41,7 @@ O **Sistema de Gestão das Olimpíadas (SGO)** foi idealizado para centralizar e
 ┃ ┗ Diagrama-de-Implantacao.jpg
 ┗ 📄 README.md
 
-
+```
 ---
 
 ## 👤 Histórias de Usuário
