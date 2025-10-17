@@ -1,4 +1,4 @@
-# 🏅 Sistema de Gestão das Olimpíadas (SGO)
+# Sistema de Gestão das Olimpíadas (SGO)
 
 > Projeto desenvolvido como parte da disciplina **Projeto de Software** (4º período de Engenharia de Software) – Professor João Paulo Carneiro Aramuni.
 
@@ -6,7 +6,7 @@ O **Sistema de Gestão das Olimpíadas (SGO)** foi idealizado para centralizar e
 
 ---
 
-## 🎯 Objetivos do Sistema
+## Objetivos do Sistema
 
 - Garantir a **organização eficiente das competições olímpicas**;
 - Automatizar o **controle de inscrições e resultados**;
@@ -16,7 +16,7 @@ O **Sistema de Gestão das Olimpíadas (SGO)** foi idealizado para centralizar e
 
 ---
 
-## 📋 Funcionalidades Principais
+## Funcionalidades 
 
 - **Cadastro de Competições** – Inclusão de modalidades, locais, horários e atletas participantes;  
 - **Gestão de Atletas e Países** – Controle de informações e inscrições de cada atleta;  
@@ -26,13 +26,13 @@ O **Sistema de Gestão das Olimpíadas (SGO)** foi idealizado para centralizar e
 
 ---
 
-## 👥 Atores do Sistema
+## Atores do Sistema
 
 ![Diagrama de Atores](./diagramas/Diagrama-de-Casos-de-Uso.jpg)
 
 ---
 ```
-## 🧩 Estrutura do Repositório
+##  Estrutura do Repositório
 
 📁 Sistema-de-Gestao-Olimpiadas/
 ┣ 📁 diagramas/
@@ -44,21 +44,21 @@ O **Sistema de Gestão das Olimpíadas (SGO)** foi idealizado para centralizar e
 ```
 ---
 
-## 👤 Histórias de Usuário
+## Histórias de Usuário
 
 | ID | História de Usuário | Prioridade |
 |----|----------------------|-------------|
-| **US01** | Como **organizador**, desejo cadastrar novas competições informando modalidade, data e local, para planejar o cronograma de provas. | Alta |
-| **US02** | Como **atleta**, quero me inscrever em diferentes modalidades, para participar oficialmente das Olimpíadas. | Alta |
-| **US03** | Como **gestor de locais**, desejo verificar e alocar arenas sem conflitos de horário, para evitar sobreposição de eventos. | Alta |
-| **US04** | Como **árbitro**, quero registrar os resultados das competições, para atualizar automaticamente o quadro de medalhas. | Alta |
-| **US05** | Como **coordenador**, desejo visualizar relatórios de desempenho por país, para acompanhar a evolução dos resultados. | Média |
-| **US06** | Como **administrador do sistema**, quero gerenciar usuários e permissões, garantindo segurança e integridade dos dados. | Média |
-| **US07** | Como **analista do comitê**, desejo exportar relatórios em PDF ou CSV, para fins de auditoria e divulgação oficial. | Baixa |
+| **HU01** | Como **organizador**, desejo cadastrar novas competições informando modalidade, data e local, para planejar o cronograma de provas. | Alta |
+| **HU02** | Como **atleta**, quero me inscrever em diferentes modalidades, para participar oficialmente das Olimpíadas. | Alta |
+| **HU03** | Como **gestor de locais**, desejo verificar e alocar arenas sem conflitos de horário, para evitar sobreposição de eventos. | Alta |
+| **HU04** | Como **árbitro**, quero registrar os resultados das competições, para atualizar automaticamente o quadro de medalhas. | Alta |
+| **HU05** | Como **coordenador**, desejo visualizar relatórios de desempenho por país, para acompanhar a evolução dos resultados. | Média |
+| **HU06** | Como **administrador do sistema**, quero gerenciar usuários e permissões, garantindo segurança e integridade dos dados. | Média |
+| **HU07** | Como **analista do comitê**, desejo exportar relatórios em PDF ou CSV, para fins de auditoria e divulgação oficial. | Baixa |
 
 ---
 
-## 🧠 Regras de Negócio
+## Regras de Negócio
 
 1. **Cadastro de Competições:** Cada competição deve conter nome, modalidade, local, data e horário únicos.  
 2. **Inscrição de Atletas:** Um atleta pode se inscrever em várias competições, mas apenas por **um país** em cada modalidade.  
@@ -71,7 +71,7 @@ O **Sistema de Gestão das Olimpíadas (SGO)** foi idealizado para centralizar e
 
 ---
 
-## 🏗️ Diagramas do Sistema
+## Diagramas do Sistema
 
 ### 1. Diagrama de Caso de Uso
 ![Diagrama de Caso de Uso](./diagramas/Diagrama-de-Casos-de-Uso.jpg)
@@ -87,7 +87,7 @@ O **Sistema de Gestão das Olimpíadas (SGO)** foi idealizado para centralizar e
 
 ---
 
-## 🛠️ Tecnologias Recomendadas
+## Tecnologias Recomendadas
 
 - **Backend:** Java Spring Boot ou Node.js  
 - **Frontend:** React, Vue.js ou Angular  
@@ -97,7 +97,7 @@ O **Sistema de Gestão das Olimpíadas (SGO)** foi idealizado para centralizar e
 
 ---
 
-## 🧾 Regras de Negócio Implementadas
+## Regras de Negócio Implementadas
 
 ✅ **Cadastro de Competições** – Criação e gerenciamento com horário e local validados;  
 ✅ **Inscrição de Atletas** – Controle por país e modalidade;  
@@ -108,7 +108,7 @@ O **Sistema de Gestão das Olimpíadas (SGO)** foi idealizado para centralizar e
 
 ---
 
-## 💡 Diferenciais do Projeto
+## Diferenciais do Projeto
 
 ✅ **Cobertura completa dos 5 diagramas UML obrigatórios** (caso de uso, classes, pacotes, componentes e implantação);  
 ✅ **Organização modular** entre camadas (apresentação, aplicação, domínio e dados);  
@@ -119,7 +119,7 @@ O **Sistema de Gestão das Olimpíadas (SGO)** foi idealizado para centralizar e
 
 ---
 
-## 👨‍💻 Autores
+## Autores
 
 **👩‍💻 Guilherme de Almeida Santos**  
 **👨‍💻 Pedro Rodrigues Duarte**  
