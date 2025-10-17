@@ -76,11 +76,13 @@ O **Sistema de Gestão das Olimpíadas (SGO)** foi idealizado para centralizar e
 ### 1. Diagrama de Caso de Uso
 ![Diagrama de Caso de Uso](./diagramas/Diagrama-de-Casos-de-Uso.jpg)
 
+### 2. Diagrama de Classes com Pacotes
+![Diagrama de Classes](./diagramas/Diagrama-de-Classes-com-Pacotes.jpg)
 
-### 4. Diagrama de Componentes
+### 3. Diagrama de Componentes
 ![Diagrama de Componentes](./diagramas/Diagrama-de-Componentes.jpg)
 
-### 5. Diagrama de Implantação
+### 4. Diagrama de Implantação
 ![Diagrama de Implantação](./diagramas/Diagrama-de-Implantacao.jpg)
 
 ---
