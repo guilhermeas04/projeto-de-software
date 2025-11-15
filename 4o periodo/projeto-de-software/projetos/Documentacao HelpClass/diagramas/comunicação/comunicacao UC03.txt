@@ -1,0 +1,16 @@
+@startuml
+title UC-03 - Comunicação: Consultar Desempenho
+
+object Professor
+object UI
+object API
+object BD
+
+Professor -> UI : 1. Selecionar aluno
+UI -> API : 2. Solicitar indicadores
+API -> BD : 3. Consultar avaliações
+BD --> API : 4. Retornar dados
+API --> UI : 5. Enviar desempenho
+UI --> Professor : 6. Exibir informações
+
+@enduml

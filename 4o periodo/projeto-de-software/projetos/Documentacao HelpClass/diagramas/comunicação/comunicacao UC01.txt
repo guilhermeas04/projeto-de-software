@@ -1,0 +1,17 @@
+@startuml
+title UC-01 - Comunicação: Autenticar Usuário
+
+object Usuario
+object UI
+object API
+object BD
+
+Usuario -> UI : 1. Enviar email e senha
+UI -> API : 2. Solicitar autenticação
+API -> BD : 3. Consultar usuário
+BD --> API : 4. Retornar dados
+API -> API : 5. Validar senha
+API --> UI : 6. Retornar sucesso/erro
+UI --> Usuario : 7. Exibir resposta
+
+@enduml

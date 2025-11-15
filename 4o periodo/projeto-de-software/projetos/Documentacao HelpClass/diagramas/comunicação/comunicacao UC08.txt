@@ -1,0 +1,23 @@
+@startuml
+title UC-08 - Comunicação: Gerenciar Usuários e Aulas
+
+object Administrador
+object UI
+object API
+object BD
+
+Administrador -> UI : 1. Selecionar gerenciamento
+UI -> API : 2. Solicitar dados
+API -> BD : 3. Consultar usuários e aulas
+BD --> API : 4. Retornar dados
+API --> UI : 5. Exibir listas
+UI -> Administrador : 6. Exibir opções
+
+Administrador -> UI : 7. Realizar operação (criar/editar/excluir)
+UI -> API : 8. Enviar solicitação
+API -> BD : 9. Atualizar registros
+BD --> API : 10. Confirmar alteração
+API --> UI : 11. Notificar sucesso
+UI -> Administrador : 12. Exibir resultado
+
+@enduml

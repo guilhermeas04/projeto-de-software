@@ -1,0 +1,23 @@
+@startuml
+title UC-06 - Comunicação: Solicitar Reagendamento
+
+object Aluno
+object UI
+object API
+object Professor
+object BD
+
+Aluno -> UI : 1. Enviar nova data/hora
+UI -> API : 2. Solicitar reagendamento
+API -> BD : 3. Buscar aula original
+BD --> API : 4. Retornar aula
+API -> Professor : 5. Solicitar aprovação
+Professor --> API : 6. Aprovar/Rejeitar
+
+API -> BD : 7. Atualizar aula (se aprovado)
+BD --> API : 8. Confirmar atualização
+
+API --> UI : 9. Enviar resposta
+UI -> Aluno : 10. Exibir resultado
+
+@enduml

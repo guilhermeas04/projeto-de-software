@@ -1,0 +1,16 @@
+@startuml
+title UC-02 - Comunicação: Cadastrar Aula
+
+object Professor
+object UI
+object API
+object BD
+
+Professor -> UI : 1. Inserir dados da aula
+UI -> API : 2. Solicitar cadastro
+API -> BD : 3. Inserir nova aula
+BD --> API : 4. Confirmar inserção
+API -> UI : 5. Retornar sucesso
+UI -> Professor : 6. Exibir confirmação
+
+@enduml

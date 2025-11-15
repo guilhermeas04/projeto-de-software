@@ -1,0 +1,16 @@
+@startuml
+title UC-07 - Comunicação: Acessar Painel Administrativo
+
+object Administrador
+object UI
+object API
+object BD
+
+Administrador -> UI : 1. Acessar painel
+UI -> API : 2. Solicitar dados
+API -> BD : 3. Buscar estatísticas
+BD --> API : 4. Retornar dados
+API --> UI : 5. Enviar informações
+UI -> Administrador : 6. Exibir painel
+
+@enduml

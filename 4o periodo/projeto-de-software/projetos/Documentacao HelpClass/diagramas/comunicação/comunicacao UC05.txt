@@ -1,0 +1,16 @@
+@startuml
+title UC-05 - Comunicação: Visualizar Calendário
+
+object Aluno
+object UI
+object API
+object BD
+
+Aluno -> UI : 1. Abrir calendário
+UI -> API : 2. Solicitar aulas
+API -> BD : 3. Buscar aulas do aluno
+BD --> API : 4. Retornar aulas
+API --> UI : 5. Enviar dados
+UI -> Aluno : 6. Exibir calendário
+
+@enduml

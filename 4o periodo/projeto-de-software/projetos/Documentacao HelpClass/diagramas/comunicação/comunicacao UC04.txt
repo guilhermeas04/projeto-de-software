@@ -1,0 +1,16 @@
+@startuml
+title UC-04 - Comunicação: Registrar Avaliação
+
+object Professor
+object UI
+object API
+object BD
+
+Professor -> UI : 1. Preencher avaliação
+UI -> API : 2. Solicitar registro
+API -> BD : 3. Gravar avaliação
+BD --> API : 4. Confirmar gravação
+API -> UI : 5. Retornar sucesso
+UI -> Professor : 6. Exibir confirmação
+
+@enduml
