@@ -1,0 +1,15 @@
+@startuml
+title UC-03 - Consultar Desempenho
+
+actor Aluno
+participant "Interface Web" as UI
+participant "API Backend" as API
+participant "Banco de Dados" as BD
+
+Aluno -> UI: Acessar painel de desempenho
+UI -> API: GET /avaliacoes/aluno/{id}
+API -> BD: Consultar registros de avaliações
+BD --> API: Retorna lista de avaliações
+API --> UI: Exibir indicadores (notas, progresso)
+UI --> Aluno: Mostrar gráficos e relatórios
+@enduml

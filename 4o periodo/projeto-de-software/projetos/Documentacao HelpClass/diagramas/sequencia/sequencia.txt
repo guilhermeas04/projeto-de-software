@@ -1,0 +1,56 @@
+@startuml
+title Diagrama de Sequência - Sistema HelpClass
+
+actor Professor
+actor Aluno
+participant "Sistema HelpClass" as Sistema
+participant "Banco de Dados" as BD
+
+' ==========================================================
+== UC-02: Cadastrar Aula (Professor) ==
+Professor -> Sistema: Login
+Sistema -> BD: Verificar credenciais
+BD --> Sistema: Credenciais válidas
+Sistema --> Professor: Acesso concedido
+
+Professor -> Sistema: Cadastrar nova aula (dados: título, aluno, data, horário)
+Sistema -> BD: Inserir registro da aula
+BD --> Sistema: Confirmação de cadastro
+Sistema --> Professor: Aula cadastrada com sucesso
+Sistema -> Aluno: Notificar novo agendamento
+
+' ==========================================================
+== UC-04: Registrar Avaliação (Professor) ==
+Professor -> Sistema: Selecionar aluno e aula concluída
+Sistema -> BD: Buscar dados da aula e histórico do aluno
+BD --> Sistema: Dados encontrados
+Sistema --> Professor: Exibir formulário de avaliação
+
+Professor -> Sistema: Enviar nota e observações
+Sistema -> BD: Registrar avaliação no histórico do aluno
+BD --> Sistema: Confirmação de gravação
+Sistema --> Professor: Avaliação registrada
+Sistema -> Aluno: Atualizar desempenho e notificar nova avaliação
+
+' ==========================================================
+== UC-06: Solicitar Reagendamento de Aula (Aluno) ==
+Aluno -> Sistema: Login
+Sistema -> BD: Validar credenciais
+BD --> Sistema: Credenciais válidas
+Sistema --> Aluno: Acesso concedido
+
+Aluno -> Sistema: Solicitar reagendamento (nova data/horário)
+Sistema -> BD: Buscar aula original
+BD --> Sistema: Aula encontrada
+Sistema -> Professor: Enviar solicitação de reagendamento
+Professor --> Sistema: Aprovar ou rejeitar solicitação
+
+alt Solicitação Aprovada
+  Sistema -> BD: Atualizar data/hora da aula
+  BD --> Sistema: Atualização confirmada
+  Sistema --> Aluno: Notificar reagendamento aprovado
+else Solicitação Rejeitada
+  Sistema --> Aluno: Notificar reagendamento negado
+end
+
+@enduml

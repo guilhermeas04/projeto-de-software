@@ -1,0 +1,17 @@
+@startuml
+title UC-05 - Visualizar Calendário
+
+actor Aluno
+participant "Interface Web / App" as UI
+participant "API Backend" as API
+participant "Banco de Dados" as BD
+
+Aluno -> UI: Acessar opção "Calendário"
+UI -> API: GET /aulas/aluno/{id}
+API -> BD: Buscar aulas do aluno
+BD --> API: Retornar lista de aulas (datas, horários, professor)
+
+API --> UI: Enviar dados estruturados do calendário
+UI --> Aluno: Exibir calendário com aulas agendadas
+
+@enduml

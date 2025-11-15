@@ -1,0 +1,16 @@
+@startuml
+title UC-02 - Cadastrar Aula
+
+actor Professor
+participant "Interface Web" as UI
+participant "API Backend" as API
+participant "Banco de Dados" as BD
+
+Professor -> UI: Inserir dados da nova aula
+UI -> API: Enviar requisição POST /aula
+API -> BD: Inserir dados (aluno, data, hora, assunto)
+BD --> API: Confirmação de inserção
+API --> UI: Aula cadastrada com sucesso
+UI --> Professor: Exibir mensagem de confirmação
+API -> UI: Notificar Aluno sobre nova aula
+@enduml

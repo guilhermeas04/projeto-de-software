@@ -1,0 +1,30 @@
+@startuml
+title UC-07 - Acessar Painel Administrativo
+
+actor Administrador
+participant "Interface Admin" as UI
+participant "API Backend" as API
+participant "Banco de Dados" as BD
+
+Administrador -> UI: Selecionar opção "Painel Administrativo"
+UI -> API: GET /admin/dashboard
+API -> API: Verificar permissões de administrador
+
+alt Permissão válida
+    API -> BD: Consultar estatísticas do sistema
+    BD --> API: Retornar dados
+
+    API -> BD: Consultar lista de usuários
+    BD --> API: Retornar usuários
+
+    API -> BD: Consultar aulas e avaliações
+    BD --> API: Retornar dados
+
+    API --> UI: Enviar dados consolidados do painel
+    UI --> Administrador: Exibir painel administrativo
+else Acesso negado
+    API --> UI: Retornar erro "Acesso não permitido"
+    UI --> Administrador: Exibir mensagem de erro
+end
+
+@enduml

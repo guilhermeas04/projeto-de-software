@@ -1,0 +1,26 @@
+@startuml
+title UC-06 - Solicitar Reagendamento de Aula
+
+actor Aluno
+participant "Interface Web" as UI
+participant "API Backend" as API
+participant "Banco de Dados" as BD
+participant "Professor" as Professor
+
+Aluno -> UI: Solicitar reagendamento (nova data/horário)
+UI -> API: Enviar requisição PUT /aula/reagendar
+API -> BD: Buscar aula original
+BD --> API: Retornar dados da aula
+API -> Professor: Enviar solicitação de reagendamento
+Professor --> API: Aprovar ou rejeitar
+
+alt Solicitação Aprovada
+    API -> BD: Atualizar data e hora da aula
+    BD --> API: Atualização confirmada
+    API -> UI: Reagendamento aprovado
+    UI --> Aluno: Exibir confirmação
+else Solicitação Rejeitada
+    API -> UI: Reagendamento negado
+    UI --> Aluno: Exibir mensagem de recusa
+end
+@enduml

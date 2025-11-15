@@ -1,0 +1,15 @@
+@startuml
+title UC-01 - Cadastrar Professor
+
+actor Administrador
+participant "Interface Web" as UI
+participant "API Backend" as API
+participant "Banco de Dados" as BD
+
+Administrador -> UI: Inserir dados do professor (nome, email, senha)
+UI -> API: POST /professor
+API -> BD: Inserir novo professor
+BD --> API: Confirmação de inserção
+API --> UI: Exibir mensagem de sucesso
+UI --> Administrador: Confirmação do cadastro
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+title UC-04 - Registrar Avaliação
+
+actor Professor
+participant "Interface Web" as UI
+participant "API Backend" as API
+participant "Banco de Dados" as BD
+participant "Aluno" as Aluno
+
+Professor -> UI: Selecionar aula concluída e aluno
+UI -> API: Solicitar dados da aula
+API -> BD: Buscar informações da aula e aluno
+BD --> API: Retorna dados
+API --> UI: Exibir formulário de avaliação
+
+Professor -> UI: Preencher e enviar avaliação
+UI -> API: POST /avaliacao (nota, observação)
+API -> BD: Inserir registro da avaliação
+BD --> API: Confirmação de inserção
+API --> Aluno: Notificar sobre nova avaliação
+API --> UI: Exibir mensagem de sucesso
+@enduml

@@ -1,0 +1,58 @@
+@startuml
+title UC-08 - Gerenciar Usuários e Aulas
+
+actor Administrador
+participant "Interface Admin" as UI
+participant "API Backend" as API
+participant "Banco de Dados" as BD
+
+Administrador -> UI: Acessar "Gerenciar Usuários e Aulas"
+UI -> API: GET /admin/management
+API -> API: Verificar permissões de administrador
+
+alt Permissão válida
+    API -> BD: Consultar lista de usuários
+    BD --> API: Retornar usuários
+
+    API -> BD: Consultar lista de aulas
+    BD --> API: Retornar aulas
+
+    API --> UI: Exibir listas completas
+    UI --> Administrador: Mostrar usuários e aulas
+
+    == Ação do Administrador ==
+    Administrador -> UI: Selecionar operação (criar/editar/excluir)
+
+    alt Criar usuário/aula
+        UI -> API: POST /create
+        API -> BD: Inserir registro
+        BD --> API: Confirmação
+        API --> UI: Registro criado com sucesso
+        UI --> Administrador: Exibir confirmação
+    else Editar usuário/aula
+        UI -> API: PUT /update/{id}
+        API -> BD: Atualizar registro
+        BD --> API: Confirmação
+        API --> UI: Alterações salvas
+        UI --> Administrador: Exibir confirmação
+    else Excluir usuário/aula
+        UI -> API: DELETE /delete/{id}
+        API -> BD: Verificar dependências
+
+        alt Pode excluir
+            API -> BD: Remover registro
+            BD --> API: Confirmação
+            API --> UI: Registro excluído
+            UI --> Administrador: Exibir confirmação
+        else Não pode excluir
+            API --> UI: Erro - dependências existentes
+            UI --> Administrador: Mostrar mensagem de impedimento
+        end
+
+    end
+else Permissão negada
+    API --> UI: Retornar erro "Acesso não permitido"
+    UI --> Administrador: Exibir mensagem de erro
+end
+
+@enduml
