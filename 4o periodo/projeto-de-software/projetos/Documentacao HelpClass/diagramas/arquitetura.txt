@@ -1,0 +1,40 @@
+@startuml
+!define C4P https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master
+!includeurl C4P/C4_Context.puml
+!includeurl C4P/C4_Container.puml
+
+LAYOUT_WITH_LEGEND()
+
+title 3.1 Arquitetura - Sistema HelpClass (Níveis Contexto e Container)
+
+' ======================
+' Nível 1 – Contexto
+' ======================
+
+Person(prof, "Professor", "Gerencia suas aulas, avalia alunos e configura disponibilidade.")
+Person(aluno, "Aluno", "Visualiza calendário de aulas e solicita reagendamentos.")
+Person(admin, "Administrador", "Mantém o sistema e gerencia usuários e dados.")
+
+System_Boundary(sistema, "HelpClass System") {
+    Container(webapp, "Interface Web", "React.js / HTML5", "Interface de uso para alunos, professores e administradores.")
+    Container(api, "API Backend", "Django REST Framework", "Processa requisições, aplica regras de negócio e acessa o banco de dados.")
+    ContainerDb(db, "Banco de Dados", "PostgreSQL", "Armazena informações sobre usuários, aulas, avaliações e agendamentos.")
+}
+
+' ======================
+' Nível 2 – Relações
+' ======================
+
+Rel(prof, webapp, "Acessa via navegador")
+Rel(aluno, webapp, "Acessa via navegador")
+Rel(admin, webapp, "Acessa via navegador (Django Admin)")
+
+Rel(webapp, api, "Envia requisições HTTP/JSON")
+Rel(api, db, "Executa operações CRUD via ORM")
+
+' Retornos e feedbacks
+Rel_Back(api, webapp, "Retorna respostas e dados processados")
+Rel_Back(db, api, "Retorna resultados de consultas e atualizações")
+
+SHOW_LEGEND()
+@enduml

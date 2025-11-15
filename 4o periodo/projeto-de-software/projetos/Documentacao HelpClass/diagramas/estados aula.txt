@@ -1,0 +1,14 @@
+@startuml
+title Diagrama de Estados - Aula
+
+[*] --> Criada
+
+Criada --> Agendada : Professor cadastra data/hora
+Agendada --> Realizada : Aula concluída
+Agendada --> Reagendada : Aluno solicita e professor confirma
+Reagendada --> Agendada : Nova data confirmada
+
+Realizada --> Avaliada : Professor registra avaliação
+Avaliada --> [*]
+
+@enduml

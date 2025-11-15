@@ -1,0 +1,35 @@
+@startuml
+title Diagrama de Estados - Sistema HelpClass (Visão Geral)
+
+[*] --> Deslogado : Iniciar Sistema
+
+Deslogado --> Autenticando : Inserir Credenciais
+Autenticando --> Autenticado : Login Válido
+Autenticando --> Deslogado : Login Inválido
+
+Autenticado --> MenuProfessor : Perfil = Professor
+Autenticado --> MenuAluno : Perfil = Aluno
+Autenticado --> MenuAdministrador : Perfil = Administrador
+
+MenuProfessor --> GerenciarAulas : Seleciona "Cadastrar Aula"
+MenuProfessor --> ConsultarDesempenho : Seleciona "Desempenho"
+MenuProfessor --> RegistrarAvaliacao : Seleciona "Avaliação"
+
+MenuAluno --> VisualizarCalendario : Seleciona "Calendário"
+MenuAluno --> SolicitarReagendamento : Seleciona "Reagendamento"
+
+MenuAdministrador --> PainelAdministrativo : Seleciona "Painel"
+PainelAdministrativo --> GerenciarUsuariosEAulas : Seleciona "Gerenciar"
+
+GerenciarAulas --> MenuProfessor
+ConsultarDesempenho --> MenuProfessor
+RegistrarAvaliacao --> MenuProfessor
+VisualizarCalendario --> MenuAluno
+SolicitarReagendamento --> MenuAluno
+GerenciarUsuariosEAulas --> MenuAdministrador
+
+MenuProfessor --> Deslogado : Logout
+MenuAluno --> Deslogado : Logout
+MenuAdministrador --> Deslogado : Logout
+
+@enduml

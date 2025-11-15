@@ -1,0 +1,15 @@
+@startuml
+title Diagrama de Estados - Solicitação de Reagendamento
+
+[*] --> Solicitada
+
+Solicitada --> EmAnalise : Sistema envia ao professor
+EmAnalise --> Aprovada : Professor confirma
+EmAnalise --> Rejeitada : Professor nega
+
+Aprovada --> AulaAtualizada : Sistema atualiza data
+AulaAtualizada --> [*]
+
+Rejeitada --> [*]
+
+@enduml

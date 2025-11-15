@@ -1,0 +1,16 @@
+@startuml
+title Diagrama de Estados - Usuário
+
+[*] --> Inativo
+
+Inativo --> Ativo : Cadastro Aprovado
+Ativo --> Logado : Autenticação Bem-sucedida
+Logado --> Ativo : Logout
+Ativo --> Suspenso : Bloqueio / Problemas Administrativos
+Suspenso --> Ativo : Reativação
+
+Logado --> Logado : Navegar no sistema
+
+Ativo --> [*]
+
+@enduml

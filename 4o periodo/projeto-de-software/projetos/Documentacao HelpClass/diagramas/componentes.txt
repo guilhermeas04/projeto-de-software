@@ -1,0 +1,33 @@
+@startuml
+title Diagrama de Componentes - Sistema HelpClass
+
+package "Frontend (Interface Web)" {
+  [Componente Login] as Login
+  [Componente Calendário] as Calendario
+  [Componente Avaliação] as AvaliacaoFront
+  [Componente Administração] as AdminFront
+}
+
+package "Backend (Django REST API)" {
+  [Controlador de Usuários] as CtrlUsuarios
+  [Controlador de Aulas] as CtrlAulas
+  [Controlador de Avaliações] as CtrlAvaliacoes
+  [Serviço de Notificações] as ServicoNotificacoes
+  [Módulo de Autenticação] as Auth
+  [ORM Django] as ORM
+}
+
+database "Banco de Dados PostgreSQL" as DB
+
+' --- Relações entre camadas ---
+Login --> Auth : autenticação
+Calendario --> CtrlAulas : consultar / reagendar aulas
+AvaliacaoFront --> CtrlAvaliacoes : registrar avaliação
+AdminFront --> CtrlUsuarios : gerenciar usuários
+CtrlAulas --> ORM
+CtrlAvaliacoes --> ORM
+CtrlUsuarios --> ORM
+ORM --> DB
+ServicoNotificacoes --> DB : registrar notificações
+
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+title Diagrama de Implantação - Sistema HelpClass
+
+node "Servidor Web (Nginx)" as WebServer {
+    artifact "Frontend React" as Frontend
+}
+
+node "Servidor de Aplicação (Django)" as AppServer {
+    artifact "Backend Django REST API" as Backend
+    artifact "Módulos do Sistema" as Modules
+}
+
+node "Servidor de Banco de Dados" as DBServer {
+    database "PostgreSQL" as Database
+}
+
+node "Cliente (Navegador Web)" as Client {
+    component "Interface do Usuário (Professor, Aluno, Administrador)" as UI
+}
+
+' --- Conexões ---
+Client --> WebServer : HTTP/HTTPS
+WebServer --> AppServer : Requisições API REST (JSON)
+AppServer --> DBServer : Consultas SQL via ORM
+
+@enduml

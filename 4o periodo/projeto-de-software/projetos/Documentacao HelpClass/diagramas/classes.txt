@@ -1,0 +1,74 @@
+@startuml
+title Diagrama de Classes - Sistema HelpClass
+
+' ======== Classes Principais ========
+
+class Usuario {
+  - id: int
+  - nome: string
+  - email: string
+  - senha: string
+  + autenticar(email: string, senha: string): bool
+  + atualizarPerfil(): void
+}
+
+class Professor {
+  - disponibilidade: string
+  + cadastrarAula(aula: Aula): void
+  + registrarAvaliacao(aluno: Aluno, avaliacao: Avaliacao): void
+  + consultarDesempenho(aluno: Aluno): void
+}
+
+class Aluno {
+  - matricula: string
+  + visualizarCalendario(): void
+  + solicitarReagendamento(aula: Aula, novaData: datetime): void
+  + consultarDesempenho(): void
+}
+
+class Administrador {
+  + gerenciarUsuarios(): void
+  + gerenciarAulas(): void
+  + acessarPainelAdmin(): void
+}
+
+class Aula {
+  - id: int
+  - dataHora: datetime
+  - status: string
+  - assunto: string
+  + reagendar(novaData: datetime): void
+  + concluirAula(): void
+}
+
+class Avaliacao {
+  - id: int
+  - nota: float
+  - observacao: string
+  - dataRegistro: datetime
+  + registrar(): void
+}
+
+class Notificacao {
+  - id: int
+  - mensagem: string
+  - dataEnvio: datetime
+  - lida: bool
+  + enviar(): void
+  + marcarComoLida(): void
+}
+
+' ======== Relacionamentos ========
+
+Usuario <|-- Professor
+Usuario <|-- Aluno
+Usuario <|-- Administrador
+
+Professor "1" -- "0..*" Aula : ministra >
+Aluno "1" -- "0..*" Aula : participa >
+Aula "1" -- "0..*" Avaliacao : gera >
+Avaliacao "1" --> "1" Aluno : avalia >
+Professor "1" --> "0..*" Avaliacao : registra >
+Usuario "1" -- "0..*" Notificacao : recebe >
+
+@enduml

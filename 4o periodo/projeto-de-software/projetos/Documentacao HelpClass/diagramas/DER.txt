@@ -1,0 +1,58 @@
+@startuml
+entity Usuario {
+  * id : PK
+  --
+  nome : varchar
+  email : varchar
+  senha_hash : varchar
+  tipo : enum('PROFESSOR','ALUNO','ADMIN')
+  ativo : boolean
+}
+
+entity Aula {
+  * id : PK
+  --
+  professor_id : FK -> Usuario.id
+  aluno_id : FK -> Usuario.id
+  data_hora : datetime
+  status : enum('AGENDADA','REALIZADA','CANCELADA')
+  descricao : text
+}
+
+entity Avaliacao {
+  * id : PK
+  --
+  aluno_id : FK -> Usuario.id
+  professor_id : FK -> Usuario.id
+  aula_id : FK -> Aula.id
+  nota : integer
+  comentario : text
+  data_registro : datetime
+}
+
+entity Desempenho {
+  * id : PK
+  --
+  aluno_id : FK -> Usuario.id
+  media_notas : float
+  total_avaliacoes : int
+  ultima_atualizacao : datetime
+}
+
+entity Reagendamento {
+  * id : PK
+  --
+  aula_id : FK -> Aula.id
+  aluno_id : FK -> Usuario.id
+  nova_data : datetime
+  status : enum('PENDENTE','APROVADO','REJEITADO')
+  justificativa : text
+}
+
+Usuario ||--o{ Aula : "professor"
+Usuario ||--o{ Aula : "aluno"
+Usuario ||--o{ Avaliacao : "avaliado"
+Usuario ||--o{ Desempenho : "referente"
+Aula ||--o{ Avaliacao
+Aula ||--o{ Reagendamento
+@enduml
